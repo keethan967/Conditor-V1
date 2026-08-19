@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <style>
+    body { margin: 0; background: #080D16; overflow-x: hidden; }
+    a { color: #34D399; text-decoration: none; }
+    a:hover { color: #10B981; text-decoration: underline; }
+  </style>
+</helmet>
+<div style="position:relative;background:#080D16;color:#F8FAFC;font-family:'Plus Jakarta Sans',sans-serif;overflow:hidden;min-height:100vh;">
+
+  <nav style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:50;display:flex;align-items:center;justify-content:space-between;gap:32px;width:min(1100px,calc(100% - 32px));padding:10px 10px 10px 20px;background:rgba(15,23,42,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);border-radius:999px;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#10B981,#064E3B);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:600;font-size:15px;color:#F8FAFC;flex-shrink:0;">C</div>
+      <span style="font-family:'Cinzel',serif;font-size:15px;font-weight:600;letter-spacing:0.04em;color:#F8FAFC;">CONDITOR</span>
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:#34D399;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:5px;padding:3px 6px;">OS</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:28px;">
+      <a href="#" style="font-size:14px;color:#94A3B8;">Platform</a>
+      <a href="#" style="font-size:14px;color:#94A3B8;">Deal Flow</a>
+      <a href="#" style="font-size:14px;color:#94A3B8;">Analytics</a>
+      <a href="#" style="font-size:14px;color:#94A3B8;">Network</a>
+      <a href="#" style="font-size:14px;color:#94A3B8;">Pricing</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a href="#" style="font-size:14px;color:#F8FAFC;padding:8px 14px;">Sign In</a>
+      <a href="#" style="font-size:14px;font-weight:600;color:#052e22;background:linear-gradient(135deg,#34D399,#10B981);padding:9px 18px;border-radius:999px;">Request Access</a>
+    </div>
+  </nav>
+
+  <section data-screen-label="Hero" style="position:relative;min-height:920px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:160px 24px 100px;text-align:center;overflow:hidden;">
+    <div ref="{{ vantaRef }}" style="position:absolute;inset:0;z-index:0;"></div>
+    <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(8,13,22,0) 0%,rgba(8,13,22,0.55) 60%,#080D16 100%);pointer-events:none;"></div>
+    <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;max-width:760px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:24px;">
+        <span style="width:20px;height:1px;background:#34D399;"></span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;color:#34D399;text-transform:uppercase;">Institutional Venture OS</span>
+        <span style="width:20px;height:1px;background:#34D399;"></span>
+      </div>
+      <h1 style="font-family: 'Cinzel',serif; font-weight: 600; font-size: clamp(38px,5.5vw,64px); line-height: 1.15; color: #F8FAFC; margin: 0 0 24px; text-decoration-line: none; font-style: normal; text-align: center">The Operating System for<br>Venture Capital.</h1>
+      <p style="font-size:18px;line-height:1.6;color:#94A3B8;margin:0 0 36px;max-width:560px;">Conditor matches institutional investors with high-conviction founders, then runs the deal — pipeline, diligence, cap tables and LP reporting — in one system.</p>
+      <div style="display:flex;gap:14px;margin-bottom:64px;">
+        <a href="#" style="font-size:15px;font-weight:600;color:#052e22;background:linear-gradient(135deg,#34D399,#10B981);padding:14px 28px;border-radius:10px;box-shadow:0 0 40px rgba(16,185,129,0.35);">Request Access</a>
+        <a href="#" style="font-size:15px;font-weight:600;color:#F8FAFC;background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.12);padding:14px 28px;border-radius:10px;">View Platform Demo</a>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;">
+        <div style="background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px 26px;backdrop-filter:blur(10px);min-width:150px;">
+          <div style="font-size:24px;font-weight:700;color:#34D399;">$4.2B</div>
+          <div style="font-size:12px;color:#94A3B8;margin-top:4px;">Matched Capital</div>
+        </div>
+        <div style="background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px 26px;backdrop-filter:blur(10px);min-width:150px;">
+          <div style="font-size:24px;font-weight:700;color:#34D399;">1,240</div>
+          <div style="font-size:12px;color:#94A3B8;margin-top:4px;">Institutional Funds</div>
+        </div>
+        <div style="background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px 26px;backdrop-filter:blur(10px);min-width:150px;">
+          <div style="font-size:24px;font-weight:700;color:#34D399;">18,600</div>
+          <div style="font-size:12px;color:#94A3B8;margin-top:4px;">Startups Screened</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Deal Flow" style="position:relative;padding:120px clamp(24px,5vw,80px);overflow:hidden;">
+    <div style="position:absolute;top:-120px;right:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.35),transparent 70%);filter:blur(70px);opacity:0.5;pointer-events:none;"></div>
+    <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <span style="width:20px;height:1px;background:#34D399;"></span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;color:#34D399;text-transform:uppercase;">Pipeline</span>
+      </div>
+      <h2 style="font-family:'Cinzel',serif;font-weight:600;font-size:clamp(28px,3.5vw,38px);color:#F8FAFC;margin:0 0 12px;">Deal Flow Pipeline</h2>
+      <p style="font-size:16px;color:#94A3B8;margin:0 0 48px;max-width:600px;">AI Smart Match scores every intro against your fund thesis, then tracks it through diligence with syndicate visibility and one-click data room access.</p>
+      <div style="display:flex;gap:20px;overflow-x:auto;padding-bottom:12px;">
+        <sc-for list="{{ dealColumns }}" as="column" hint-placeholder-count="4">
+          <div style="width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0 4px;">
+              <span style="font-size:13px;font-weight:600;letter-spacing:0.04em;color:#F8FAFC;text-transform:uppercase;">{{ column.name }}</span>
+              <span style="font-size:12px;font-weight:600;color:#94A3B8;background:rgba(255,255,255,0.06);border-radius:999px;padding:2px 9px;">{{ column.count }}</span>
+            </div>
+            <sc-for list="{{ column.deals }}" as="deal" hint-placeholder-count="2">
+              <div style="background:rgba(15,23,42,0.8);border:1px solid {{ deal.cardBorder }};box-shadow:{{ deal.cardShadow }};border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(12px);">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                  <span style="font-size:11px;color:#94A3B8;background:rgba(255,255,255,0.06);border-radius:999px;padding:3px 9px;">{{ deal.sector }}</span>
+                  <span style="font-size:11px;font-weight:700;color:{{ deal.matchColor }};background:{{ deal.matchBg }};border:1px solid {{ deal.matchBorder }};border-radius:999px;padding:3px 9px;white-space:nowrap;">{{ deal.matchScore }}% Match</span>
+                </div>
+                <div style="font-size:16px;font-weight:600;color:#F8FAFC;">{{ deal.name }}</div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;">
+                  <span style="font-size:11px;color:#64748B;text-transform:uppercase;letter-spacing:0.04em;">Check Size</span>
+                  <span style="font-size:13px;font-weight:500;color:#F8FAFC;">{{ deal.checkSize }}</span>
+                </div>
+                <div style="height:1px;background:rgba(255,255,255,0.06);"></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <sc-if value="{{ showSyndicate }}" hint-placeholder-val="{{ true }}">
+                    <div style="display:flex;padding-left:8px;">
+                      <sc-for list="{{ deal.syndicate }}" as="initial" hint-placeholder-count="2">
+                        <div style="width:24px;height:24px;border-radius:50%;background:#334155;border:2px solid #0B1220;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#F8FAFC;margin-left:-8px;">{{ initial }}</div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <a href="#" style="display:flex;align-items:center;gap:4px;font-size:12px;color:#94A3B8;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4M15 3h6v6M21 3 10 14"></path></svg>
+                    Data Room
+                  </a>
+                </div>
+                <div style="font-size:11px;color:#64748B;">{{ deal.lastActivity }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Analytics" style="position:relative;padding:120px clamp(24px,5vw,80px);overflow:hidden;">
+    <div style="position:absolute;bottom:-140px;left:-140px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.3),transparent 70%);filter:blur(70px);opacity:0.5;pointer-events:none;"></div>
+    <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <span style="width:20px;height:1px;background:#34D399;"></span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;color:#34D399;text-transform:uppercase;">Portfolio Intelligence</span>
+      </div>
+      <h2 style="font-family:'Cinzel',serif;font-weight:600;font-size:clamp(28px,3.5vw,38px);color:#F8FAFC;margin:0 0 12px;">Valuation &amp; Cap Table Analytics</h2>
+      <p style="font-size:16px;color:#94A3B8;margin:0 0 48px;max-width:600px;">Track markup trajectories and ownership dilution across every round, for every portfolio company, in one view.</p>
+
+      <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:24px;">
+        <div style="background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;backdrop-filter:blur(12px);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px;">
+            <div style="font-size:16px;font-weight:600;color:#F8FAFC;">Kestrel Space — Valuation Growth</div>
+            <span style="font-size:12px;font-weight:700;color:#34D399;background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.3);border-radius:999px;padding:4px 10px;">22x since Seed</span>
+          </div>
+          <svg viewBox="0 0 600 300" style="width:100%;height:auto;overflow:visible;">
+            <defs>
+              <linearGradient id="valGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#10B981" stop-opacity="0.35"></stop>
+                <stop offset="100%" stop-color="#10B981" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <line x1="60" y1="260" x2="560" y2="260" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4"></line>
+            <line x1="60" y1="150" x2="560" y2="150" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4"></line>
+            <line x1="60" y1="40" x2="560" y2="40" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 4"></line>
+            <text x="0" y="264" fill="#64748B" font-size="12" font-family="Plus Jakarta Sans">$0</text>
+            <text x="0" y="154" fill="#64748B" font-size="12" font-family="Plus Jakarta Sans">$90M</text>
+            <text x="0" y="44" fill="#64748B" font-size="12" font-family="Plus Jakarta Sans">$180M</text>
+            <path d="M60,260 L60,250 C130,240 150,225 220,221 C280,218 320,160 380,144 C430,130 480,70 540,40 L540,260 Z" fill="url(#valGrad)"></path>
+            <path d="M60,250 C130,240 150,225 220,221 C280,218 320,160 380,144 C430,130 480,70 540,40" fill="none" stroke="#10B981" stroke-width="2.5"></path>
+            <circle cx="60" cy="250" r="4.5" fill="#34D399" stroke="#080D16" stroke-width="2"></circle>
+            <circle cx="220" cy="221" r="4.5" fill="#34D399" stroke="#080D16" stroke-width="2"></circle>
+            <circle cx="380" cy="144" r="4.5" fill="#34D399" stroke="#080D16" stroke-width="2"></circle>
+            <circle cx="540" cy="40" r="4.5" fill="#34D399" stroke="#080D16" stroke-width="2"></circle>
+            <text x="45" y="284" fill="#94A3B8" font-size="12" font-family="Plus Jakarta Sans">Seed</text>
+            <text x="195" y="284" fill="#94A3B8" font-size="12" font-family="Plus Jakarta Sans">Series A</text>
+            <text x="355" y="284" fill="#94A3B8" font-size="12" font-family="Plus Jakarta Sans">Series B</text>
+            <text x="515" y="284" fill="#94A3B8" font-size="12" font-family="Plus Jakarta Sans">Series C</text>
+          </svg>
+        </div>
+
+        <div style="background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;backdrop-filter:blur(12px);display:flex;flex-direction:column;">
+          <div style="font-size:16px;font-weight:600;color:#F8FAFC;margin-bottom:20px;">Cap Table Composition</div>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#94A3B8;"><span style="width:8px;height:8px;border-radius:2px;background:#334155;"></span>Founders</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#94A3B8;"><span style="width:8px;height:8px;border-radius:2px;background:#475569;"></span>ESOP</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#94A3B8;"><span style="width:8px;height:8px;border-radius:2px;background:#065F46;"></span>Seed</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#94A3B8;"><span style="width:8px;height:8px;border-radius:2px;background:#059669;"></span>Series A</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#94A3B8;"><span style="width:8px;height:8px;border-radius:2px;background:#10B981;"></span>Series B</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#94A3B8;"><span style="width:8px;height:8px;border-radius:2px;background:#34D399;"></span>Series C</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;flex:1;justify-content:center;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="width:56px;font-size:12px;color:#94A3B8;flex-shrink:0;">Seed</span>
+              <div style="display:flex;flex:1;height:26px;border-radius:6px;overflow:hidden;">
+                <div style="width:76%;background:#334155;"></div><div style="width:8%;background:#475569;"></div><div style="width:16%;background:#065F46;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="width:56px;font-size:12px;color:#94A3B8;flex-shrink:0;">Series A</span>
+              <div style="display:flex;flex:1;height:26px;border-radius:6px;overflow:hidden;">
+                <div style="width:61%;background:#334155;"></div><div style="width:10%;background:#475569;"></div><div style="width:13%;background:#065F46;"></div><div style="width:16%;background:#059669;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="width:56px;font-size:12px;color:#94A3B8;flex-shrink:0;">Series B</span>
+              <div style="display:flex;flex:1;height:26px;border-radius:6px;overflow:hidden;">
+                <div style="width:52%;background:#334155;"></div><div style="width:12%;background:#475569;"></div><div style="width:11%;background:#065F46;"></div><div style="width:14%;background:#059669;"></div><div style="width:11%;background:#10B981;"></div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="width:56px;font-size:12px;color:#94A3B8;flex-shrink:0;">Series C</span>
+              <div style="display:flex;flex:1;height:26px;border-radius:6px;overflow:hidden;">
+                <div style="width:44%;background:#334155;"></div><div style="width:13%;background:#475569;"></div><div style="width:9%;background:#065F46;"></div><div style="width:12%;background:#059669;"></div><div style="width:10%;background:#10B981;"></div><div style="width:12%;background:#34D399;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Design Tokens" style="position:relative;padding:120px clamp(24px,5vw,80px);overflow:hidden;">
+    <div style="position:absolute;top:20%;right:-160px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.28),transparent 70%);filter:blur(70px);opacity:0.5;pointer-events:none;"></div>
+    <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <span style="width:20px;height:1px;background:#34D399;"></span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.14em;color:#34D399;text-transform:uppercase;">Fund Intelligence</span>
+      </div>
+      <h2 style="font-family:'Cinzel',serif;font-weight:600;font-size:clamp(28px,3.5vw,38px);color:#F8FAFC;margin:0 0 48px;">Built for How Funds Actually Work</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div style="background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;backdrop-filter:blur(12px);">
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#64748B;text-transform:uppercase;margin-bottom:14px;">Average Check Size</div>
+          <div style="font-size:26px;font-weight:700;color:#F8FAFC;">$500K – $750K</div>
+          <div style="position:relative;height:6px;background:rgba(255,255,255,0.08);border-radius:999px;margin:24px 0 8px;">
+            <div style="position:absolute;left:22%;width:30%;height:6px;background:linear-gradient(90deg,#10B981,#34D399);border-radius:999px;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#64748B;margin-bottom:16px;">
+            <span>$250K</span><span>$1.5M</span>
+          </div>
+          <div style="font-size:13px;color:#94A3B8;">Sweet spot for Series A syndicate participation.</div>
+        </div>
+
+        <div style="background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;text-align:center;">
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#64748B;text-transform:uppercase;margin-bottom:14px;align-self:flex-start;">Fund Thesis Compatibility</div>
+          <div style="width:140px;height:140px;border-radius:50%;background:conic-gradient(#10B981 0deg 313deg,rgba(255,255,255,0.08) 313deg 360deg);display:flex;align-items:center;justify-content:center;margin:8px 0 18px;">
+            <div style="width:108px;height:108px;border-radius:50%;background:#111827;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+              <div style="font-size:26px;font-weight:700;color:#34D399;">87%</div>
+              <div style="font-size:10px;color:#64748B;letter-spacing:0.06em;text-transform:uppercase;">Match</div>
+            </div>
+          </div>
+          <div style="font-size:13px;color:#94A3B8;">Climate + Infrastructure thesis — 3 active funds aligned.</div>
+        </div>
+
+        <div style="background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;backdrop-filter:blur(12px);">
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#64748B;text-transform:uppercase;margin-bottom:14px;">Deal Activity</div>
+          <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:26px;font-weight:700;color:#F8FAFC;">34</span>
+            <span style="font-size:13px;color:#94A3B8;">new intros this week</span>
+            <span style="font-size:11px;font-weight:700;color:#34D399;background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.3);border-radius:999px;padding:2px 8px;">+12%</span>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:6px;height:60px;margin:24px 0 8px;">
+            <div style="width:8px;height:18px;border-radius:3px;background:rgba(16,185,129,0.4);"></div>
+            <div style="width:8px;height:24px;border-radius:3px;background:rgba(16,185,129,0.4);"></div>
+            <div style="width:8px;height:20px;border-radius:3px;background:rgba(16,185,129,0.4);"></div>
+            <div style="width:8px;height:32px;border-radius:3px;background:rgba(16,185,129,0.55);"></div>
+            <div style="width:8px;height:28px;border-radius:3px;background:rgba(16,185,129,0.55);"></div>
+            <div style="width:8px;height:44px;border-radius:3px;background:#10B981;"></div>
+            <div style="width:8px;height:52px;border-radius:3px;background:#34D399;"></div>
+          </div>
+          <div style="font-size:13px;color:#94A3B8;">Mon – Sun, this week vs last.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="Footer" style="position:relative;border-top:1px solid rgba(255,255,255,0.08);padding:64px clamp(24px,5vw,80px) 32px;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:48px;">
+      <div style="max-width:320px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#10B981,#064E3B);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-weight:600;font-size:13px;color:#F8FAFC;">C</div>
+          <span style="font-family:'Cinzel',serif;font-size:14px;font-weight:600;letter-spacing:0.04em;color:#F8FAFC;">CONDITOR</span>
+        </div>
+        <div style="font-size:13px;color:#64748B;line-height:1.6;">The operating system for institutional venture capital.</div>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-size:12px;font-weight:600;color:#F8FAFC;margin-bottom:4px;">Platform</span>
+          <a href="#" style="font-size:13px;color:#64748B;">Deal Flow</a>
+          <a href="#" style="font-size:13px;color:#64748B;">Analytics</a>
+          <a href="#" style="font-size:13px;color:#64748B;">Data Rooms</a>
+          <a href="#" style="font-size:13px;color:#64748B;">Network</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <span style="font-size:12px;font-weight:600;color:#F8FAFC;margin-bottom:4px;">Company</span>
+          <a href="#" style="font-size:13px;color:#64748B;">About</a>
+          <a href="#" style="font-size:13px;color:#64748B;">Careers</a>
+          <a href="#" style="font-size:13px;color:#64748B;">Press</a>
+          <a href="#" style="font-size:13px;color:#64748B;">Security</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1280px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#64748B;">
+      <span>© 2026 Conditor Technologies, Inc.</span>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:13px;color:#64748B;">Privacy</a>
+        <a href="#" style="font-size:13px;color:#64748B;">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 1000},
+  &quot;vantaEnabled&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero&quot;},
+  &quot;showSyndicateAvatars&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Deal Flow&quot;}
+}">
+class Component extends DCLogic {
+  vantaRef = React.createRef();
+  vantaEffect = null;
+
+  componentDidMount() {
+    this.tryInitVanta(0);
+  }
+
+  componentWillUnmount() {
+    if (this.vantaEffect && this.vantaEffect.destroy) this.vantaEffect.destroy();
+  }
+
+  tryInitVanta(attempt) {
+    if (this.props.vantaEnabled === false) return;
+    if (typeof window.VANTA === "undefined" || typeof window.THREE === "undefined") {
+      if (attempt < 40) setTimeout(() => this.tryInitVanta(attempt + 1), 150);
+      return;
+    }
+    if (!this.vantaRef.current || this.vantaEffect) return;
+    this.vantaEffect = window.VANTA.NET({
+      el: this.vantaRef.current,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x10b981,
+      backgroundColor: 0x080d16,
+      points: 10.0,
+      maxDistance: 22.0,
+      spacing: 18.0
+    });
+  }
+
+  renderVals() {
+    const showSyndicate = this.props.showSyndicateAvatars ?? true;
+
+    const tier = (score) => {
+      if (score >= 90) return { matchColor: "#34D399", matchBg: "rgba(52,211,153,0.14)", matchBorder: "rgba(52,211,153,0.35)" };
+      if (score >= 80) return { matchColor: "#10B981", matchBg: "rgba(16,185,129,0.12)", matchBorder: "rgba(16,185,129,0.3)" };
+      return { matchColor: "#94A3B8", matchBg: "rgba(148,163,184,0.12)", matchBorder: "rgba(148,163,184,0.3)" };
+    };
+
+    const mk = (name, sector, matchScore, checkSize, syndicate, lastActivity, highlighted) => ({
+      name, sector, matchScore, checkSize, syndicate, lastActivity,
+      ...tier(matchScore),
+      cardBorder: highlighted ? "rgba(16,185,129,0.4)" : "rgba(255,255,255,0.08)",
+      cardShadow: highlighted ? "0 0 32px rgba(16,185,129,0.15)" : "none"
+    });
+
+    const dealColumns = [
+      { name: "Intro", count: 3, deals: [
+        mk("Arclight Robotics", "Climate Tech", 72, "$250K – $500K", ["BK", "RS"], "3d ago"),
+        mk("Solace Health", "Digital Health", 68, "$200K – $400K", ["JM"], "1d ago"),
+        mk("Loomis AI", "Applied AI", 81, "$300K – $600K", ["BK", "RS", "JM"], "6h ago")
+      ]},
+      { name: "Screening", count: 2, deals: [
+        mk("Verdant Bio", "Biotech", 85, "$500K – $1M", ["RS", "JM"], "2d ago"),
+        mk("Ferrous Analytics", "Fintech Data", 79, "$400K – $800K", ["BK"], "4d ago")
+      ]},
+      { name: "Diligence", count: 2, deals: [
+        mk("Kestrel Space", "Aerospace", 91, "$750K – $1.5M", ["BK", "RS"], "1d ago"),
+        mk("Nimbus Grid", "Infra AI", 88, "$600K – $1.2M", ["JM", "RS", "BK"], "8h ago")
+      ]},
+      { name: "Term Sheet", count: 1, deals: [
+        mk("Halcyon Freight", "Logistics", 96, "$1M – $2M", ["BK", "RS", "JM"], "Term sheet issued · 2h ago", true)
+      ]}
+    ];
+
+    return { vantaRef: this.vantaRef, showSyndicate, dealColumns };
+  }
+}
+
+</script>
+</body>
+</html>

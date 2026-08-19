@@ -1,0 +1,782 @@
+import type { Startup } from "./types";
+
+/**
+ * Fixture startups. Covers a spread of industries, stages and readiness
+ * levels so every filter combination in Discover/Search returns something.
+ */
+export const STARTUPS: Startup[] = [
+  {
+    id: "st_orbital",
+    slug: "orbital-health",
+    name: "Orbital Health",
+    tagline: "AI triage for primary care clinics.",
+    description:
+      "Orbital Health builds an AI copilot for primary-care clinicians that drafts triage notes, flags risk factors, and cuts documentation time in half.",
+    industry: "healthtech",
+    stage: "series_a",
+    country: "United States",
+    city: "Austin",
+    foundedYear: 2022,
+    teamSize: "21-50",
+    employees: 34,
+    revenueBand: "1m_10m",
+    website: "orbitalhealth.io",
+    hue: 210,
+    founders: [
+      { name: "Priya Nandakumar", role: "CEO & Co-founder" },
+      { name: "Marcus Webb", role: "CTO & Co-founder" },
+    ],
+    fundingGoal: 8_000_000,
+    amountRaised: 5_200_000,
+    interestedInvestors: 14,
+    meetingsScheduled: 6,
+    dueDiligenceActive: 2,
+    investmentReadiness: 86,
+    pitch: {
+      mission: "Give every clinician back an hour a day.",
+      vision: "A world where no clinician spends more time on notes than on patients.",
+      elevatorPitch:
+        "Orbital listens to the visit, drafts the note, and flags what a human might miss — clinicians review in seconds instead of writing for minutes.",
+      problem:
+        "Primary-care clinicians spend nearly two hours on documentation for every hour of patient care, driving burnout and delaying diagnoses.",
+      solution:
+        "An ambient AI copilot that transcribes, structures and drafts clinical notes in real time, with risk flags reviewed by the clinician before signing.",
+      investorSummary:
+        "Orbital Health now makes $3.4M a year across 60 clinics in 14 months, keeps 96% of its clinician users, and cuts documentation time in half.",
+    },
+    traction: [
+      { label: "Yearly sales", value: "$3.4M" },
+      { label: "Clinics live", value: "60" },
+      { label: "Notes / month", value: "142K" },
+      { label: "Would recommend us", value: "71%" },
+    ],
+    tags: ["AI", "Clinical workflow", "B2B SaaS"],
+    analytics: {
+      profileViews: 1284,
+      deckOpens: 214,
+      deckDownloads: 58,
+      meetingRequests: 19,
+      messagesReceived: 41,
+      investorSaves: 63,
+      weeklyGrowth: 0.184,
+      weeklyViews: [62, 74, 68, 91, 103, 88, 122],
+    },
+  },
+  {
+    id: "st_meridian",
+    slug: "meridian-robotics",
+    name: "Meridian Robotics",
+    tagline: "Autonomous inspection drones for offshore energy.",
+    description:
+      "Meridian builds ruggedized inspection drones that autonomously survey offshore wind and oil platforms, replacing manned helicopter inspections.",
+    industry: "robotics",
+    stage: "seed",
+    country: "United Kingdom",
+    city: "Aberdeen",
+    foundedYear: 2023,
+    teamSize: "6-20",
+    employees: 17,
+    revenueBand: "under_100k",
+    website: "meridianrobotics.co",
+    hue: 205,
+    founders: [{ name: "Callum Fraser", role: "CEO & Founder" }],
+    fundingGoal: 3_500_000,
+    amountRaised: 900_000,
+    interestedInvestors: 9,
+    meetingsScheduled: 3,
+    dueDiligenceActive: 1,
+    investmentReadiness: 64,
+    pitch: {
+      mission: "Take people out of the most dangerous inspection routes on earth.",
+      vision: "Every offshore platform inspected autonomously within the decade.",
+      elevatorPitch:
+        "We replace $40K helicopter inspection runs with a $2K autonomous drone flight that produces a better dataset.",
+      problem:
+        "Offshore inspection is expensive, weather-dependent and puts crews in the highest-risk part of their job.",
+      solution:
+        "Autonomous, weather-hardened drones with onboard defect detection, docked directly on the platform for zero-notice deployment.",
+      investorSummary:
+        "Three signed pilots with North Sea operators, first commercial contract closing this quarter, and a defensible hardware + inspection-AI stack.",
+    },
+    traction: [
+      { label: "Pilots signed", value: "3" },
+      { label: "Flight hours logged", value: "1,240" },
+      { label: "Cost reduction", value: "94%" },
+    ],
+    tags: ["Hardware", "Autonomy", "Energy"],
+    analytics: {
+      profileViews: 512,
+      deckOpens: 88,
+      deckDownloads: 21,
+      meetingRequests: 7,
+      messagesReceived: 15,
+      investorSaves: 24,
+      weeklyGrowth: 0.092,
+      weeklyViews: [21, 19, 28, 24, 33, 30, 41],
+    },
+  },
+  {
+    id: "st_ledgerly",
+    slug: "ledgerly",
+    name: "Ledgerly",
+    tagline: "Real-time compliance infrastructure for fintech.",
+    description:
+      "Ledgerly gives fintech companies a drop-in compliance layer — KYC, transaction monitoring and regulatory reporting — in a single API.",
+    industry: "fintech",
+    stage: "series_b",
+    country: "United States",
+    city: "New York",
+    foundedYear: 2020,
+    teamSize: "51-200",
+    employees: 118,
+    revenueBand: "10m_50m",
+    website: "ledgerly.com",
+    hue: 152,
+    founders: [
+      { name: "Adaeze Okoro", role: "CEO & Co-founder" },
+      { name: "Sam Feldman", role: "COO & Co-founder" },
+    ],
+    fundingGoal: 25_000_000,
+    amountRaised: 25_000_000,
+    interestedInvestors: 22,
+    meetingsScheduled: 4,
+    dueDiligenceActive: 0,
+    investmentReadiness: 94,
+    pitch: {
+      mission: "Make regulatory compliance a competitive advantage, not a tax.",
+      vision: "The compliance layer every regulated fintech is built on.",
+      elevatorPitch:
+        "One API for KYC, monitoring and reporting — what used to take a 12-person compliance team now takes one engineer and an afternoon.",
+      problem:
+        "Fintechs spend 18+ months and millions of dollars building compliance infrastructure before they can legally launch.",
+      solution:
+        "A unified compliance API covering identity verification, transaction monitoring and multi-jurisdiction regulatory reporting.",
+      investorSummary:
+        "$14.2M a year in sales, 340 customers including two public fintech companies, existing customers are spending 28% more over time, and more investors wanted in than there was room for.",
+    },
+    traction: [
+      { label: "Yearly sales", value: "$14.2M" },
+      { label: "Customers", value: "340" },
+      { label: "Customers spending more", value: "128%" },
+    ],
+    tags: ["Compliance", "API", "RegTech"],
+    analytics: {
+      profileViews: 2940,
+      deckOpens: 340,
+      deckDownloads: 112,
+      meetingRequests: 31,
+      messagesReceived: 76,
+      investorSaves: 148,
+      weeklyGrowth: 0.061,
+      weeklyViews: [210, 198, 224, 260, 251, 289, 302],
+    },
+  },
+  {
+    id: "st_verdant",
+    slug: "verdant-carbon",
+    name: "Verdant Carbon",
+    tagline: "Soil-carbon measurement, verified in weeks not years.",
+    description:
+      "Verdant combines satellite imagery and in-field sensors to measure soil carbon sequestration for regenerative farms, cutting verification time from years to weeks.",
+    industry: "climatetech",
+    stage: "seed",
+    country: "Canada",
+    city: "Calgary",
+    foundedYear: 2023,
+    teamSize: "6-20",
+    employees: 12,
+    revenueBand: "under_100k",
+    website: "verdantcarbon.ca",
+    hue: 145,
+    founders: [{ name: "Elin Bjornsson", role: "CEO & Founder" }],
+    fundingGoal: 4_000_000,
+    amountRaised: 1_100_000,
+    interestedInvestors: 11,
+    meetingsScheduled: 5,
+    dueDiligenceActive: 1,
+    investmentReadiness: 71,
+    pitch: {
+      mission:
+        "Make carbon markets trustworthy enough to fund regenerative farming at scale.",
+      vision:
+        "Every farm's soil carbon measured continuously, not estimated once a decade.",
+      elevatorPitch:
+        "We turn an 18-month, $200K verification process into a 3-week, $8K one — without losing scientific rigor.",
+      problem:
+        "Soil-carbon credits are distrusted because verification is slow, expensive and inconsistent across providers.",
+      solution:
+        "A sensor network plus satellite model that continuously measures soil carbon and publishes an auditable trail.",
+      investorSummary:
+        "42 farms under measurement across 3 provinces, signed agreements with two carbon registries, no sales yet but a strong pipeline of trials.",
+    },
+    traction: [
+      { label: "Farms measured", value: "42" },
+      { label: "Acres covered", value: "68,000" },
+      { label: "Registries interested", value: "2" },
+    ],
+    tags: ["Climate", "Sensors", "Carbon markets"],
+    analytics: {
+      profileViews: 610,
+      deckOpens: 96,
+      deckDownloads: 27,
+      meetingRequests: 8,
+      messagesReceived: 18,
+      investorSaves: 31,
+      weeklyGrowth: 0.145,
+      weeklyViews: [18, 22, 26, 24, 35, 40, 47],
+    },
+  },
+  {
+    id: "st_cipherline",
+    slug: "cipherline",
+    name: "Cipherline",
+    tagline: "Zero-trust security for industrial control systems.",
+    description:
+      "Cipherline secures the operational technology behind factories, grids and pipelines with zero-trust network segmentation built for legacy industrial protocols.",
+    industry: "cybersecurity",
+    stage: "series_a",
+    country: "Israel",
+    city: "Tel Aviv",
+    foundedYear: 2021,
+    teamSize: "21-50",
+    employees: 41,
+    revenueBand: "1m_10m",
+    website: "cipherline.io",
+    hue: 12,
+    founders: [
+      { name: "Noa Rosen", role: "CEO & Co-founder" },
+      { name: "Itai Ben-David", role: "CTO & Co-founder" },
+    ],
+    fundingGoal: 10_000_000,
+    amountRaised: 6_400_000,
+    interestedInvestors: 17,
+    meetingsScheduled: 7,
+    dueDiligenceActive: 3,
+    investmentReadiness: 82,
+    pitch: {
+      mission: "Make critical infrastructure impossible to hold hostage.",
+      vision: "Zero-trust as the default posture for every industrial network by 2030.",
+      elevatorPitch:
+        "We deploy in front of PLCs and SCADA systems no cloud security vendor can reach, without touching the control loop.",
+      problem:
+        "Industrial control systems run protocols from the 1990s with no authentication, and ransomware crews know it.",
+      solution:
+        "Passive-first network segmentation that maps OT topology and enforces zero-trust policy without disrupting operations.",
+      investorSummary:
+        "$4.1M a year in sales across 22 industrial customers including two Fortune 500 manufacturers, and deals are closing faster every quarter.",
+    },
+    traction: [
+      { label: "Yearly sales", value: "$4.1M" },
+      { label: "Sites protected", value: "140" },
+      { label: "Customers kept", value: "100%" },
+    ],
+    tags: ["OT Security", "Zero Trust", "Critical Infrastructure"],
+    analytics: {
+      profileViews: 1470,
+      deckOpens: 201,
+      deckDownloads: 64,
+      meetingRequests: 22,
+      messagesReceived: 47,
+      investorSaves: 79,
+      weeklyGrowth: 0.113,
+      weeklyViews: [88, 92, 101, 96, 118, 130, 142],
+    },
+  },
+  {
+    id: "st_fablume",
+    slug: "fablume",
+    name: "Fablume",
+    tagline: "Generative design for sustainable packaging.",
+    description:
+      "Fablume's generative engine designs and sources compostable packaging that matches a brand's cost and durability requirements in hours instead of months.",
+    industry: "deeptech",
+    stage: "pre_seed",
+    country: "Germany",
+    city: "Berlin",
+    foundedYear: 2024,
+    teamSize: "1-5",
+    employees: 4,
+    revenueBand: "pre_revenue",
+    website: "fablume.de",
+    hue: 88,
+    founders: [{ name: "Lukas Vogt", role: "CEO & Founder" }],
+    fundingGoal: 1_200_000,
+    amountRaised: 180_000,
+    interestedInvestors: 4,
+    meetingsScheduled: 2,
+    dueDiligenceActive: 0,
+    investmentReadiness: 41,
+    pitch: {
+      mission: "Delete plastic packaging from the default option.",
+      vision: "Generative design as the fastest path off plastic, not the slowest.",
+      elevatorPitch:
+        "Tell us the product, we generate three compostable packaging options with suppliers and pricing attached.",
+      problem:
+        "Sustainable packaging redesign takes brands 6-9 months and usually costs more, so most never switch.",
+      solution:
+        "A generative design engine trained on material science data that outputs manufacturable, priced packaging options instantly.",
+      investorSummary:
+        "Pre-revenue, two design partners signed (a beverage brand and a cosmetics brand), founder previously led packaging R&D at a major CPG.",
+    },
+    traction: [
+      { label: "Design partners", value: "2" },
+      { label: "Materials modeled", value: "310" },
+    ],
+    tags: ["Generative design", "Sustainability", "Materials"],
+    analytics: {
+      profileViews: 204,
+      deckOpens: 31,
+      deckDownloads: 9,
+      meetingRequests: 3,
+      messagesReceived: 6,
+      investorSaves: 11,
+      weeklyGrowth: 0.31,
+      weeklyViews: [4, 6, 5, 9, 12, 14, 19],
+    },
+  },
+  {
+    id: "st_northtide",
+    slug: "northtide",
+    name: "Northtide",
+    tagline: "The operating system for independent logistics fleets.",
+    description:
+      "Northtide gives independent trucking fleets the routing, dispatch and load-matching tools that only large carriers used to afford.",
+    industry: "logistics",
+    stage: "series_a",
+    country: "United States",
+    city: "Chicago",
+    foundedYear: 2021,
+    teamSize: "21-50",
+    employees: 29,
+    revenueBand: "1m_10m",
+    website: "northtide.com",
+    hue: 220,
+    founders: [
+      { name: "Derrick Owusu", role: "CEO & Co-founder" },
+      { name: "Wei Zhang", role: "CTO & Co-founder" },
+    ],
+    fundingGoal: 9_000_000,
+    amountRaised: 3_800_000,
+    interestedInvestors: 12,
+    meetingsScheduled: 5,
+    dueDiligenceActive: 1,
+    investmentReadiness: 77,
+    pitch: {
+      mission: "Give the independent fleet the tools of a Fortune 500 carrier.",
+      vision: "Every truck in America running on load-matched, fuel-optimal routes.",
+      elevatorPitch:
+        "One dashboard replaces the six disconnected tools a small fleet owner juggles today, and pays for itself in fuel savings alone.",
+      problem:
+        "70% of US trucking capacity sits with fleets under 20 trucks, running on spreadsheets and phone calls.",
+      solution:
+        "A unified dispatch, routing and load-matching platform priced per truck, not per enterprise contract.",
+      investorSummary:
+        "$2.8M a year in sales across 640 fleets, growing 18% every month, and profit per fleet keeps improving as the platform grows.",
+    },
+    traction: [
+      { label: "Fleets onboarded", value: "640" },
+      { label: "Yearly sales", value: "$2.8M" },
+      { label: "Growth each month", value: "18%" },
+    ],
+    tags: ["Logistics", "Marketplace", "SMB SaaS"],
+    analytics: {
+      profileViews: 980,
+      deckOpens: 156,
+      deckDownloads: 44,
+      meetingRequests: 14,
+      messagesReceived: 29,
+      investorSaves: 52,
+      weeklyGrowth: 0.098,
+      weeklyViews: [55, 61, 58, 70, 75, 82, 90],
+    },
+  },
+  {
+    id: "st_kindlecare",
+    slug: "kindlecare",
+    name: "Kindlecare",
+    tagline: "Continuity of care between hospital and home.",
+    description:
+      "Kindlecare coordinates post-discharge care plans between hospitals, home health agencies and families, cutting 30-day readmissions.",
+    industry: "healthtech",
+    stage: "seed",
+    country: "Australia",
+    city: "Melbourne",
+    foundedYear: 2022,
+    teamSize: "6-20",
+    employees: 15,
+    revenueBand: "100k_1m",
+    website: "kindlecare.au",
+    hue: 330,
+    founders: [{ name: "Freya Nilsson", role: "CEO & Founder" }],
+    fundingGoal: 3_000_000,
+    amountRaised: 1_400_000,
+    interestedInvestors: 8,
+    meetingsScheduled: 4,
+    dueDiligenceActive: 1,
+    investmentReadiness: 68,
+    pitch: {
+      mission: "No one falls through the gap between hospital and home again.",
+      vision:
+        "Discharge day as the safest day of a patient's care journey, not the riskiest.",
+      elevatorPitch:
+        "We connect the hospital's discharge plan directly to the home-care team, so nothing gets lost in a fax machine.",
+      problem:
+        "One in five patients is readmitted within 30 days, often because the discharge plan never reaches the home-care provider intact.",
+      solution:
+        "A coordination platform that turns discharge plans into shared, trackable care tasks across hospital, agency and family.",
+      investorSummary:
+        "Live with 3 hospital networks, readmissions down 23% in pilot cohorts, strong clinical champion pull for expansion.",
+    },
+    traction: [
+      { label: "Hospital networks", value: "3" },
+      { label: "Readmission reduction", value: "23%" },
+    ],
+    tags: ["Care coordination", "HealthTech", "B2B2C"],
+    analytics: {
+      profileViews: 430,
+      deckOpens: 61,
+      deckDownloads: 18,
+      meetingRequests: 6,
+      messagesReceived: 13,
+      investorSaves: 22,
+      weeklyGrowth: 0.077,
+      weeklyViews: [12, 15, 14, 19, 21, 24, 27],
+    },
+  },
+  {
+    id: "st_quivera",
+    slug: "quivera-space",
+    name: "Quivera Space",
+    tagline: "In-orbit manufacturing for optical fiber.",
+    description:
+      "Quivera manufactures ultra-pure optical fiber in microgravity, where the absence of convection produces fiber with a fraction of the signal loss possible on Earth.",
+    industry: "space",
+    stage: "series_a",
+    country: "United States",
+    city: "Denver",
+    foundedYear: 2020,
+    teamSize: "21-50",
+    employees: 38,
+    revenueBand: "100k_1m",
+    website: "quiveraspace.com",
+    hue: 48,
+    founders: [
+      { name: "Grace Okonjo", role: "CEO & Co-founder" },
+      { name: "Tomas Reyes", role: "CTO & Co-founder" },
+    ],
+    fundingGoal: 15_000_000,
+    amountRaised: 9_500_000,
+    interestedInvestors: 19,
+    meetingsScheduled: 8,
+    dueDiligenceActive: 2,
+    investmentReadiness: 79,
+    pitch: {
+      mission:
+        "Move manufacturing where physics makes it better, not just where it's cheap.",
+      vision:
+        "In-space manufacturing as a standard line item on a hyperscaler's bill of materials.",
+      elevatorPitch:
+        "We've flown three missions and proven fiber quality no ground-based furnace can match — now we're scaling production cadence.",
+      problem:
+        "Convection currents limit the purity of optical fiber manufactured on Earth, capping performance for long-haul and specialty applications.",
+      solution:
+        "A reusable orbital manufacturing platform producing ZBLAN optical fiber, returned via commercial capsule providers.",
+      investorSummary:
+        "Three successful missions, a signed supply agreement with a telecom infrastructure provider, and hardware that's proven ahead of most competitors.",
+    },
+    traction: [
+      { label: "Missions flown", value: "3" },
+      { label: "Signal loss reduction", value: "10x" },
+    ],
+    tags: ["Space manufacturing", "Deep tech", "Hardware"],
+    analytics: {
+      profileViews: 1120,
+      deckOpens: 178,
+      deckDownloads: 51,
+      meetingRequests: 16,
+      messagesReceived: 33,
+      investorSaves: 61,
+      weeklyGrowth: 0.087,
+      weeklyViews: [64, 70, 66, 80, 85, 92, 99],
+    },
+  },
+  {
+    id: "st_pathwise",
+    slug: "pathwise",
+    name: "Pathwise",
+    tagline: "Adaptive tutoring that closes the learning gap.",
+    description:
+      "Pathwise builds an adaptive math and reading tutor that identifies exactly where a student's understanding breaks down and rebuilds from there.",
+    industry: "edtech",
+    stage: "seed",
+    country: "India",
+    city: "Bengaluru",
+    foundedYear: 2023,
+    teamSize: "6-20",
+    employees: 19,
+    revenueBand: "100k_1m",
+    website: "pathwise.in",
+    hue: 42,
+    founders: [
+      { name: "Ananya Rao", role: "CEO & Co-founder" },
+      { name: "Vikram Shetty", role: "Head of Learning Science" },
+    ],
+    fundingGoal: 4_500_000,
+    amountRaised: 1_600_000,
+    interestedInvestors: 13,
+    meetingsScheduled: 6,
+    dueDiligenceActive: 1,
+    investmentReadiness: 73,
+    pitch: {
+      mission: "Every student gets a tutor that actually finds the gap.",
+      vision:
+        "Mastery-based learning as the default, not the exception, for a billion students.",
+      elevatorPitch:
+        "Most edtech drills the wrong problem. We diagnose the actual misconception in under 5 questions and teach to it.",
+      problem:
+        "Standardized tutoring re-teaches the whole topic instead of finding the one misconception causing a student to struggle.",
+      solution:
+        "A diagnostic engine that pinpoints conceptual gaps in minutes, then sequences a personalized path back to grade level.",
+      investorSummary:
+        "220K monthly active students across 400 partner schools, 1.4 grade-levels average improvement in one term.",
+    },
+    traction: [
+      { label: "Monthly active students", value: "220K" },
+      { label: "Partner schools", value: "400" },
+      { label: "Grade-level gain", value: "1.4" },
+    ],
+    tags: ["EdTech", "AI tutoring", "B2B2C"],
+    analytics: {
+      profileViews: 860,
+      deckOpens: 132,
+      deckDownloads: 38,
+      meetingRequests: 12,
+      messagesReceived: 26,
+      investorSaves: 47,
+      weeklyGrowth: 0.121,
+      weeklyViews: [48, 52, 50, 61, 67, 71, 79],
+    },
+  },
+  {
+    id: "st_harborline",
+    slug: "harborline",
+    name: "Harborline",
+    tagline: "Underwriting for the gig-economy self-employed.",
+    description:
+      "Harborline underwrites insurance and credit products for gig workers using real-time platform earnings data instead of traditional pay stubs.",
+    industry: "fintech",
+    stage: "seed",
+    country: "United States",
+    city: "Miami",
+    foundedYear: 2022,
+    teamSize: "6-20",
+    employees: 22,
+    revenueBand: "100k_1m",
+    website: "harborline.co",
+    hue: 178,
+    founders: [{ name: "Camila Duarte", role: "CEO & Founder" }],
+    fundingGoal: 5_000_000,
+    amountRaised: 2_100_000,
+    interestedInvestors: 10,
+    meetingsScheduled: 4,
+    dueDiligenceActive: 1,
+    investmentReadiness: 69,
+    pitch: {
+      mission:
+        "Give the self-employed the same financial products as a salaried employee.",
+      vision:
+        "Earnings-based underwriting as the new credit standard for 70M gig workers.",
+      elevatorPitch:
+        "We plug into platform earnings APIs and underwrite in seconds what a bank needs three pay stubs and two weeks to approve.",
+      problem:
+        "70 million gig workers are systematically declined for credit and insurance because underwriting still assumes a W-2.",
+      solution:
+        "Real-time earnings-based underwriting integrated directly with gig platforms, live at point of sign-up.",
+      investorSummary:
+        "12 platform integrations live, $840K in insurance sold last quarter, and 40% fewer missed payments than the industry average.",
+    },
+    traction: [
+      { label: "Platform integrations", value: "12" },
+      { label: "Insurance sold", value: "$840K/quarter" },
+    ],
+    tags: ["InsurTech", "Underwriting", "Gig economy"],
+    analytics: {
+      profileViews: 540,
+      deckOpens: 79,
+      deckDownloads: 22,
+      meetingRequests: 7,
+      messagesReceived: 16,
+      investorSaves: 28,
+      weeklyGrowth: 0.103,
+      weeklyViews: [26, 29, 27, 34, 38, 41, 45],
+    },
+  },
+  {
+    id: "st_glasswing",
+    slug: "glasswing-ai",
+    name: "Glasswing AI",
+    tagline: "The copilot for enterprise legal review.",
+    description:
+      "Glasswing reviews commercial contracts against a company's playbook in minutes, flagging deviations and drafting redlines for legal teams.",
+    industry: "ai",
+    stage: "series_a",
+    country: "United States",
+    city: "San Francisco",
+    foundedYear: 2022,
+    teamSize: "21-50",
+    employees: 46,
+    revenueBand: "1m_10m",
+    website: "glasswing.ai",
+    hue: 168,
+    founders: [
+      { name: "Jonas Kessler", role: "CEO & Co-founder" },
+      { name: "Mei Lin", role: "CTO & Co-founder" },
+    ],
+    fundingGoal: 12_000_000,
+    amountRaised: 8_100_000,
+    interestedInvestors: 24,
+    meetingsScheduled: 9,
+    dueDiligenceActive: 3,
+    investmentReadiness: 89,
+    pitch: {
+      mission: "Give every legal team the leverage of a top-tier firm.",
+      vision:
+        "Contract review that takes minutes, not weeks, for any company on earth.",
+      elevatorPitch:
+        "We turn a company's playbook into a live reviewer that reads every incoming contract before a lawyer has to.",
+      problem:
+        "In-house legal teams are permanently understaffed relative to contract volume, and outside counsel is too slow and expensive for routine review.",
+      solution:
+        "An AI reviewer trained on a company's own playbook and precedent, flagging deviations with cited clause-level reasoning.",
+      investorSummary:
+        "$6.8M a year in sales, 58 big-business customers, an 84% cut in contract review time, and existing customers spending 42% more over time.",
+    },
+    traction: [
+      { label: "Yearly sales", value: "$6.8M" },
+      { label: "Big-business customers", value: "58" },
+      { label: "Customers spending more", value: "142%" },
+    ],
+    tags: ["Legal AI", "Enterprise", "LLM"],
+    analytics: {
+      profileViews: 3120,
+      deckOpens: 402,
+      deckDownloads: 138,
+      meetingRequests: 38,
+      messagesReceived: 91,
+      investorSaves: 176,
+      weeklyGrowth: 0.152,
+      weeklyViews: [240, 255, 268, 290, 312, 340, 368],
+    },
+  },
+  {
+    id: "st_realmark",
+    slug: "realmark",
+    name: "Realmark",
+    tagline: "Underwriting-grade property data for lenders.",
+    description:
+      "Realmark aggregates permit, inspection and satellite data into a single underwriting-grade property risk score for mortgage lenders.",
+    industry: "proptech",
+    stage: "series_b",
+    country: "United States",
+    city: "Dallas",
+    foundedYear: 2019,
+    teamSize: "51-200",
+    employees: 94,
+    revenueBand: "10m_50m",
+    website: "realmark.com",
+    hue: 26,
+    founders: [
+      { name: "Brian Alvarez", role: "CEO & Co-founder" },
+      { name: "Julia Bergstrom", role: "CTO & Co-founder" },
+    ],
+    fundingGoal: 20_000_000,
+    amountRaised: 18_500_000,
+    interestedInvestors: 15,
+    meetingsScheduled: 3,
+    dueDiligenceActive: 1,
+    investmentReadiness: 91,
+    pitch: {
+      mission: "Replace guesswork in property underwriting with ground-truth data.",
+      vision: "A risk score every mortgage lender trusts by default.",
+      elevatorPitch:
+        "We fuse permit records, inspection history and satellite change-detection into one score lenders plug straight into underwriting.",
+      problem:
+        "Property risk data is fragmented across county offices and inspection reports, forcing lenders to underwrite on incomplete information.",
+      solution:
+        "A unified, continuously updated property risk score built from public records, satellite imagery and inspection data.",
+      investorSummary:
+        "$11.6M a year in sales, contracts with 4 of the top 20 US mortgage lenders, and their data advantage grows stronger with every new customer.",
+    },
+    traction: [
+      { label: "Yearly sales", value: "$11.6M" },
+      { label: "Top-20 lenders", value: "4" },
+    ],
+    tags: ["PropTech", "Risk data", "Lending"],
+    analytics: {
+      profileViews: 1860,
+      deckOpens: 244,
+      deckDownloads: 82,
+      meetingRequests: 21,
+      messagesReceived: 48,
+      investorSaves: 94,
+      weeklyGrowth: 0.048,
+      weeklyViews: [150, 148, 162, 158, 171, 165, 180],
+    },
+  },
+  {
+    id: "st_ninefold",
+    slug: "ninefold-games",
+    name: "Ninefold Games",
+    tagline: "Co-op strategy games built for spectators.",
+    description:
+      "Ninefold designs cooperative strategy games engineered from the ground up to be as compelling to watch as to play, built for the streaming generation.",
+    industry: "gaming",
+    stage: "pre_seed",
+    country: "South Korea",
+    city: "Seoul",
+    foundedYear: 2024,
+    teamSize: "1-5",
+    employees: 5,
+    revenueBand: "pre_revenue",
+    website: "ninefoldgames.com",
+    hue: 350,
+    founders: [{ name: "Ji-hoon Park", role: "CEO & Founder" }],
+    fundingGoal: 900_000,
+    amountRaised: 120_000,
+    interestedInvestors: 5,
+    meetingsScheduled: 2,
+    dueDiligenceActive: 0,
+    investmentReadiness: 38,
+    pitch: {
+      mission: "Build the games people would rather watch than scroll past.",
+      vision: "Spectator-first design as the new standard for competitive co-op games.",
+      elevatorPitch:
+        "Our closed alpha averages 22 minutes of watch time per stream viewer — nearly triple the genre average.",
+      problem:
+        "Most strategy games are designed for players first and are boring to watch, capping their reach on streaming platforms.",
+      solution:
+        "A co-op strategy game engineered with spectator mechanics — hidden information, momentum swings — built in from day one.",
+      investorSummary:
+        "Closed alpha with 4,200 players, 22-minute average watch time per viewer, founding team from two prior shipped titles.",
+    },
+    traction: [
+      { label: "Alpha players", value: "4,200" },
+      { label: "Avg. watch time", value: "22 min" },
+    ],
+    tags: ["Gaming", "Streaming", "Co-op"],
+    analytics: {
+      profileViews: 340,
+      deckOpens: 44,
+      deckDownloads: 12,
+      meetingRequests: 4,
+      messagesReceived: 9,
+      investorSaves: 17,
+      weeklyGrowth: 0.221,
+      weeklyViews: [10, 13, 12, 17, 21, 25, 30],
+    },
+  },
+];
+
+export function getStartupBySlug(slug: string): Startup | undefined {
+  return STARTUPS.find((startup) => startup.slug === slug);
+}

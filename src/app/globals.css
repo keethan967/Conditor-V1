@@ -1,0 +1,606 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* ==========================================================================
+   CONDITOR DESIGN SYSTEM
+   Aurellus Industries
+
+   Architecture
+   ------------
+   1. `:root` / `.dark`  — raw token values. The ONLY place a colour is authored.
+   2. `@theme inline`    — maps tokens to Tailwind utilities (`bg-primary`, …).
+   3. `@layer base`      — global element defaults.
+
+   Rules of engagement
+   -------------------
+   • Components consume SEMANTIC names (`bg-surface`, `text-muted-foreground`).
+     Never a raw hex, never a palette step (`bg-indigo-600`) in feature code.
+   • Every token is defined for BOTH themes. If it exists in `:root` it must
+     exist in `.dark`, otherwise dark mode silently inherits and breaks.
+   • Colour space is oklch — perceptually uniform, so `/50` opacity and
+     `color-mix` produce predictable results at every lightness.
+   ========================================================================== */
+
+@custom-variant dark (&:is(.dark *));
+
+/* --------------------------------------------------------------------------
+   1. TOKENS — LIGHT (default)
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Brand ramp — Conditor Forest Green, extracted directly from the official
+     logo mark (the pillar's fill samples to oklch(0.290 0.058 161.35), which
+     anchors step 900 below). One hue throughout — H 161.35 — so the ramp
+     reads as a single confident green, not a gradient of unrelated colours.
+     Exposed so gradients/illustrations can reach for a step directly. */
+  --brand-50: oklch(0.967 0.014 161.35);
+  --brand-100: oklch(0.936 0.028 161.35);
+  --brand-200: oklch(0.878 0.048 161.35);
+  --brand-300: oklch(0.795 0.072 161.35);
+  --brand-400: oklch(0.7 0.095 161.35);
+  --brand-500: oklch(0.6 0.112 161.35);
+  --brand-600: oklch(0.5 0.118 161.35);
+  --brand-700: oklch(0.41 0.105 161.35);
+  --brand-800: oklch(0.335 0.085 161.35);
+  --brand-900: oklch(0.29 0.0575 161.35); /* = the logo's own pillar colour */
+  --brand-950: oklch(0.2 0.04 161.35);
+
+  /* Accents — used for data, status and highlights. Never for primary CTAs.
+     Chosen and ordered to sit well against the brand green: warm gold and
+     terracotta for contrast, cool blue and teal for balance. No purple —
+     it doesn't belong to this brand. */
+  --gold: oklch(0.65 0.16 85); /* Gold      */
+  --blue: oklch(0.6 0.17 250); /* Blue      */
+  --terracotta: oklch(0.58 0.17 30); /* Terracotta */
+  --teal: oklch(0.62 0.13 195); /* Teal      */
+  --amber: oklch(0.666 0.179 58.318); /* Amber (warning only) */
+
+  /* Surfaces — a 3-step elevation model.
+     background < surface < elevated. Anything deeper is a modal, not a layer. */
+  --background: oklch(1 0 0);
+  --surface: oklch(1 0 0);
+  --surface-muted: oklch(0.984 0.003 247.858);
+  --elevated: oklch(1 0 0);
+  --foreground: oklch(0.208 0.042 265.755);
+
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--elevated);
+  --popover-foreground: var(--foreground);
+
+  /* Intent */
+  --primary: var(--brand-600);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary-hover: var(--brand-700);
+  --primary-subtle: var(--brand-50);
+  --primary-subtle-foreground: var(--brand-700);
+
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.279 0.041 260.031);
+
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+
+  /* Status — paired foreground + subtle background for badges/alerts.
+     Success is its own, slightly warmer green than the brand ramp — related,
+     but distinguishable, so a badge never reads as "just the brand colour". */
+  --success: oklch(0.6 0.145 150);
+  --success-foreground: oklch(0.984 0.003 247.858);
+  --success-subtle: oklch(0.962 0.044 156.743);
+  --success-subtle-foreground: oklch(0.448 0.119 165.612);
+
+  --warning: var(--amber);
+  --warning-foreground: oklch(0.208 0.042 265.755);
+  --warning-subtle: oklch(0.973 0.071 103.193);
+  --warning-subtle-foreground: oklch(0.473 0.137 46.201);
+
+  --info: var(--blue);
+  --info-foreground: oklch(0.984 0.003 247.858);
+  --info-subtle: oklch(0.951 0.026 236.824);
+  --info-subtle-foreground: oklch(0.443 0.11 240.79);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --destructive-subtle: oklch(0.971 0.013 17.38);
+  --destructive-subtle-foreground: oklch(0.505 0.213 27.518);
+
+  /* Lines & focus */
+  --border: oklch(0.929 0.013 255.508);
+  --border-strong: oklch(0.869 0.022 252.894);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: var(--brand-500);
+
+  /* Data visualisation — fixed categorical order, validated against the
+     data-viz skill's six checks (lightness band, chroma floor, CVD-adjacent
+     separation, normal-vision floor, contrast) at surface white — all PASS,
+     no warnings. Never reorder per-chart; a filter that drops a series must
+     not repaint the survivors. */
+  --chart-1: var(--brand-600);
+  --chart-2: var(--gold);
+  --chart-3: var(--blue);
+  --chart-4: var(--terracotta);
+  --chart-5: var(--teal);
+
+  /* Navigation shell */
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.279 0.041 260.031);
+  --sidebar-primary: var(--brand-600);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.929 0.013 255.508);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: var(--brand-500);
+
+  /* Geometry */
+  --radius: 0.625rem;
+
+  /* Elevation — forest-green-tinted rather than neutral black, so shadows
+     read as part of the brand instead of dirt on the screen. Kept
+     deliberately soft. */
+  --shadow-color: 160 35% 14%;
+  --shadow-xs: 0 1px 2px 0 hsl(var(--shadow-color) / 0.04);
+  --shadow-sm:
+    0 1px 3px 0 hsl(var(--shadow-color) / 0.06),
+    0 1px 2px -1px hsl(var(--shadow-color) / 0.04);
+  --shadow-md:
+    0 4px 12px -2px hsl(var(--shadow-color) / 0.08),
+    0 2px 6px -2px hsl(var(--shadow-color) / 0.04);
+  --shadow-lg:
+    0 12px 32px -8px hsl(var(--shadow-color) / 0.12),
+    0 4px 12px -4px hsl(var(--shadow-color) / 0.06);
+  --shadow-xl: 0 24px 56px -12px hsl(var(--shadow-color) / 0.18);
+
+  /* Motion — one scale, used everywhere. Brief: 150–250ms, subtle. */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.36, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 250ms;
+}
+
+/* --------------------------------------------------------------------------
+   2. TOKENS — DARK
+   Not an inversion. Surfaces lift with lightness (never with black overlays),
+   borders become translucent white, and brand steps shift lighter to hold
+   contrast against a dark ground.
+   -------------------------------------------------------------------------- */
+
+.dark {
+  --background: oklch(0.145 0.02 265);
+  --surface: oklch(0.185 0.022 265);
+  --surface-muted: oklch(0.165 0.021 265);
+  --elevated: oklch(0.215 0.024 265);
+  --foreground: oklch(0.984 0.003 247.858);
+
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--elevated);
+  --popover-foreground: var(--foreground);
+
+  --primary: var(--brand-500);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --primary-hover: var(--brand-400);
+  --primary-subtle: oklch(0.279 0.075 277 / 45%);
+  --primary-subtle-foreground: var(--brand-300);
+
+  --secondary: oklch(0.259 0.028 264);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+
+  --muted: oklch(0.259 0.028 264);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+
+  --accent: oklch(0.259 0.028 264);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+
+  --success: oklch(0.7 0.16 150);
+  --success-foreground: oklch(0.145 0.02 265);
+  --success-subtle: oklch(0.393 0.095 165 / 40%);
+  --success-subtle-foreground: oklch(0.845 0.143 164.978);
+
+  --warning: oklch(0.769 0.188 70.08);
+  --warning-foreground: oklch(0.145 0.02 265);
+  --warning-subtle: oklch(0.414 0.112 45 / 40%);
+  --warning-subtle-foreground: oklch(0.879 0.169 91.605);
+
+  --info: oklch(0.746 0.16 232.661);
+  --info-foreground: oklch(0.145 0.02 265);
+  --info-subtle: oklch(0.391 0.09 240 / 40%);
+  --info-subtle-foreground: oklch(0.828 0.111 230.318);
+
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.145 0.02 265);
+  --destructive-subtle: oklch(0.444 0.177 26.899 / 35%);
+  --destructive-subtle-foreground: oklch(0.808 0.114 19.571);
+
+  --border: oklch(1 0 0 / 10%);
+  --border-strong: oklch(1 0 0 / 18%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: var(--brand-400);
+
+  /* Re-stepped for the dark surface and validated with the data-viz skill's
+     six-check script (band, chroma, CVD-adjacent, normal-vision floor,
+     contrast) against surface #0e131d — all PASS, no warnings. */
+  --chart-1: var(--brand-500);
+  --chart-2: oklch(0.66 0.15 85);
+  --chart-3: oklch(0.65 0.15 235);
+  --chart-4: oklch(0.65 0.16 30);
+  --chart-5: oklch(0.65 0.13 190);
+
+  --sidebar: oklch(0.165 0.021 265);
+  --sidebar-foreground: oklch(0.869 0.022 252.894);
+  --sidebar-primary: var(--brand-400);
+  --sidebar-primary-foreground: oklch(0.145 0.02 265);
+  --sidebar-accent: oklch(0.259 0.028 264);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--brand-400);
+
+  /* Shadows carry almost no weight on dark grounds — depth comes from the
+     surface ramp instead. Kept for structural consistency, not decoration. */
+  --shadow-color: 160 55% 1%;
+  --shadow-xs: 0 1px 2px 0 hsl(var(--shadow-color) / 0.3);
+  --shadow-sm:
+    0 1px 3px 0 hsl(var(--shadow-color) / 0.4),
+    0 1px 2px -1px hsl(var(--shadow-color) / 0.3);
+  --shadow-md:
+    0 4px 12px -2px hsl(var(--shadow-color) / 0.5),
+    0 2px 6px -2px hsl(var(--shadow-color) / 0.35);
+  --shadow-lg:
+    0 12px 32px -8px hsl(var(--shadow-color) / 0.6),
+    0 4px 12px -4px hsl(var(--shadow-color) / 0.4);
+  --shadow-xl: 0 24px 56px -12px hsl(var(--shadow-color) / 0.7);
+}
+
+/* --------------------------------------------------------------------------
+   3. THEME MAPPING — token → Tailwind utility
+   -------------------------------------------------------------------------- */
+
+@theme inline {
+  /* Typography. One family (Geist) across the product: a display face that
+     merely echoes the body face adds a font request and no hierarchy.
+     Hierarchy comes from size, weight and tracking instead. Geist's full
+     100–900 variable weight range is what makes that work — headline weights
+     go all the way to black without a second font file. */
+  --font-sans: var(--font-geist-sans);
+  --font-heading: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Display scale — for marketing and page titles. Tracking tightens as size
+     grows, which is what makes large type read as designed rather than zoomed. */
+  --text-display-xs: 1.5rem;
+  --text-display-xs--line-height: 2rem;
+  --text-display-xs--letter-spacing: -0.014em;
+  --text-display-sm: 1.875rem;
+  --text-display-sm--line-height: 2.375rem;
+  --text-display-sm--letter-spacing: -0.018em;
+  --text-display-md: 2.25rem;
+  --text-display-md--line-height: 2.75rem;
+  --text-display-md--letter-spacing: -0.022em;
+  --text-display-lg: 3rem;
+  --text-display-lg--line-height: 3.5rem;
+  --text-display-lg--letter-spacing: -0.026em;
+  --text-display-xl: 3.75rem;
+  --text-display-xl--line-height: 4.25rem;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-2xl: 4.5rem;
+  --text-display-2xl--line-height: 5rem;
+  --text-display-2xl--letter-spacing: -0.034em;
+
+  /* Brand ramp */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  /* Accents */
+  --color-gold: var(--gold);
+  --color-blue-accent: var(--blue);
+  --color-terracotta: var(--terracotta);
+  --color-teal-accent: var(--teal);
+  --color-amber-accent: var(--amber);
+
+  /* Surfaces */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-elevated: var(--elevated);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Intent */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-primary-subtle-foreground: var(--primary-subtle-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Status */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-subtle: var(--success-subtle);
+  --color-success-subtle-foreground: var(--success-subtle-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-warning-subtle-foreground: var(--warning-subtle-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-subtle: var(--info-subtle);
+  --color-info-subtle-foreground: var(--info-subtle-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-subtle: var(--destructive-subtle);
+  --color-destructive-subtle-foreground: var(--destructive-subtle-foreground);
+
+  /* Lines */
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Radii — one geometric progression from a single `--radius` */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Shadows */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  /* Layout constants — referenced by the app shell so the sidebar/header
+     never drift out of sync between components. */
+  --spacing-header: 3.75rem;
+  --spacing-sidebar: 16rem;
+  --spacing-sidebar-collapsed: 3.75rem;
+  --container-content: 80rem;
+  --container-prose: 45rem;
+
+  /* Motion */
+  --ease-out-quart: var(--ease-out-quart);
+  --ease-spring: var(--ease-spring);
+  --animate-fade-in: fade-in var(--duration-base) var(--ease-out-quart);
+  --animate-rise: rise var(--duration-slow) var(--ease-out-quart);
+  --animate-shimmer: shimmer 1.8s linear infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. BASE LAYER
+   -------------------------------------------------------------------------- */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply font-sans antialiased;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    /* Reserve the scrollbar gutter so opening a dialog (which locks scroll)
+       doesn't shift the entire layout sideways. */
+    scrollbar-gutter: stable;
+  }
+
+  /* Belt-and-braces: no page should ever scroll sideways. A component that
+     mis-sizes a flex/grid child (a Kanban column, a wide table) should show
+     its OWN internal scrollbar via `overflow-x-auto`, never widen the page.
+     This is the backstop for when one slips through. */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings default to bold weight and tight tracking; utilities on the
+     element still win, so call sites that need a lighter weight (e.g. a
+     card title) simply set their own `font-*` class. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading font-bold tracking-tight text-balance;
+  }
+
+  /* A single, unmistakable focus ring across every interactive element.
+     `:focus-visible` only — never punish mouse users with a ring. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  /* Tabular numerals wherever figures are compared vertically (metrics,
+     funding amounts, tables) — opt in with `.tabular`. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+
+  /* Accessibility: honour the OS reduced-motion setting globally, so no
+     individual component has to remember to. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. UTILITIES
+   Reserved for patterns genuinely reused across features. Anything used once
+   belongs in the component, not here.
+   -------------------------------------------------------------------------- */
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(135deg, var(--brand-500) 0%, var(--brand-700) 100%);
+}
+
+/* Gradient text for hero headlines. Used sparingly — one per page, at most. */
+@utility text-brand-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--foreground) 20%,
+    var(--brand-500) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hairline that fades out at both ends — used for section dividers. */
+@utility divider-fade {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-strong),
+    transparent
+  );
+}
+
+/* Standard interactive lift. Encapsulated here so every card in the product
+   rises by exactly the same amount, at exactly the same speed. */
+@utility lift {
+  transition:
+    transform var(--duration-base) var(--ease-out-quart),
+    box-shadow var(--duration-base) var(--ease-out-quart),
+    border-color var(--duration-base) var(--ease-out-quart);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Tactile press feedback on clickable cards — settles instantly (no easing
+     curve) so the response reads as immediate, the way a physical press does. */
+  &:active {
+    transform: translateY(-1px) scale(0.99);
+    transition-duration: 80ms;
+  }
+}
+
+/* Aurora mesh — the auth hero panel's background. Three soft radial lights
+   over a dark brand base — green, gold and teal, like light over a forest
+   canopy — dark in both themes: the panel is a fixed dramatic surface, not
+   something that flips to a pale gradient in light mode. */
+@utility bg-aurora {
+  background-color: var(--brand-950);
+  background-image:
+    radial-gradient(
+      at 15% 15%,
+      color-mix(in oklch, var(--brand-400) 55%, transparent) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      at 85% 5%,
+      color-mix(in oklch, var(--gold) 45%, transparent) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      at 50% 100%,
+      color-mix(in oklch, var(--teal) 45%, transparent) 0%,
+      transparent 60%
+    );
+}
+
+/* Faint dot grid for texture over dark hero surfaces. Fades toward the edges
+   via a mask so it reads as depth, not as a repeating pattern. */
+@utility bg-dot-grid {
+  background-image: radial-gradient(
+    color-mix(in oklch, white 25%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 40%, transparent 90%);
+}
+
+/* Clamp helpers — multi-line truncation is common enough in feed/card UIs. */
+@utility line-clamp-2-safe {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

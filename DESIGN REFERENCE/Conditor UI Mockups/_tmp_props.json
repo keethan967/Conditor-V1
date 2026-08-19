@@ -1,0 +1,5 @@
+{
+  "$preview": {"width": 1440, "height": 1000},
+  "vantaEnabled": {"editor": "boolean", "default": true, "tsType": "boolean", "section": "Landing"},
+  "showSyndicateAvatars": {"editor": "boolean", "default": true, "tsType": "boolean", "section": "Investor Dashboard"}
+}
